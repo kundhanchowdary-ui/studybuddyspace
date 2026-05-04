@@ -14,7 +14,203 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      focus_sessions: {
+        Row: {
+          chapter: string | null
+          completed_at: string
+          duration_minutes: number
+          id: string
+          subject: string | null
+          user_id: string
+          xp_earned: number
+        }
+        Insert: {
+          chapter?: string | null
+          completed_at?: string
+          duration_minutes: number
+          id?: string
+          subject?: string | null
+          user_id: string
+          xp_earned?: number
+        }
+        Update: {
+          chapter?: string | null
+          completed_at?: string
+          duration_minutes?: number
+          id?: string
+          subject?: string | null
+          user_id?: string
+          xp_earned?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "focus_sessions_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          bio: string | null
+          board: string | null
+          class_level: string | null
+          created_at: string
+          current_streak: number
+          display_name: string
+          id: string
+          is_online: boolean
+          last_study_date: string | null
+          level: number
+          longest_streak: number
+          onboarded: boolean
+          total_focus_minutes: number
+          updated_at: string
+          xp: number
+        }
+        Insert: {
+          avatar_url?: string | null
+          bio?: string | null
+          board?: string | null
+          class_level?: string | null
+          created_at?: string
+          current_streak?: number
+          display_name?: string
+          id: string
+          is_online?: boolean
+          last_study_date?: string | null
+          level?: number
+          longest_streak?: number
+          onboarded?: boolean
+          total_focus_minutes?: number
+          updated_at?: string
+          xp?: number
+        }
+        Update: {
+          avatar_url?: string | null
+          bio?: string | null
+          board?: string | null
+          class_level?: string | null
+          created_at?: string
+          current_streak?: number
+          display_name?: string
+          id?: string
+          is_online?: boolean
+          last_study_date?: string | null
+          level?: number
+          longest_streak?: number
+          onboarded?: boolean
+          total_focus_minutes?: number
+          updated_at?: string
+          xp?: number
+        }
+        Relationships: []
+      }
+      struggles: {
+        Row: {
+          chapter: string
+          class_level: string | null
+          created_at: string
+          id: string
+          message: string | null
+          resolved: boolean
+          subject: string
+          user_id: string
+        }
+        Insert: {
+          chapter: string
+          class_level?: string | null
+          created_at?: string
+          id?: string
+          message?: string | null
+          resolved?: boolean
+          subject: string
+          user_id: string
+        }
+        Update: {
+          chapter?: string
+          class_level?: string | null
+          created_at?: string
+          id?: string
+          message?: string | null
+          resolved?: boolean
+          subject?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "struggles_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      user_badges: {
+        Row: {
+          badge_code: string
+          earned_at: string
+          id: string
+          user_id: string
+        }
+        Insert: {
+          badge_code: string
+          earned_at?: string
+          id?: string
+          user_id: string
+        }
+        Update: {
+          badge_code?: string
+          earned_at?: string
+          id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "user_badges_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      user_subjects: {
+        Row: {
+          created_at: string
+          current_chapter: string | null
+          id: string
+          subject: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          current_chapter?: string | null
+          id?: string
+          subject: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          current_chapter?: string | null
+          id?: string
+          subject?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "user_subjects_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
