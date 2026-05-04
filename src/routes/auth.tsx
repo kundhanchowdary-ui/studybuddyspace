@@ -65,15 +65,9 @@ function AuthPage() {
 
   const handleGoogle = async () => {
     try {
-      const { lovable } = await import("@/integrations/lovable/index").catch(() => ({ lovable: null as never }));
-      if (lovable) {
-        const result = await lovable.auth.signInWithOAuth("google", { redirect_uri: `${window.location.origin}/dashboard` });
-        if (result.error) throw new Error(result.error.message || "Google sign in failed");
-        return;
-      }
-      // Fallback if lovable module not generated yet
-      const { error } = await supabase.auth.signInWithOAuth({ provider: "google", options: { redirectTo: `${window.location.origin}/dashboard` } });
-      if (error) throw error;
+      const { lovable } = await import("@/integrations/lovable/index");
+      const result = await lovable.auth.signInWithOAuth("google", { redirect_uri: `${window.location.origin}/dashboard` });
+      if (result.error) throw new Error(result.error.message || "Google sign in failed");
     } catch (e) {
       toast.error(e instanceof Error ? e.message : "Google sign in failed");
     }
