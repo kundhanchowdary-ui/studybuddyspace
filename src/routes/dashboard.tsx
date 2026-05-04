@@ -84,6 +84,7 @@ function Dashboard() {
       {/* Quick actions */}
       <div className="grid sm:grid-cols-2 gap-3 mb-6">
         <ActionCard to="/buddies" icon={<Users />} title="Find a buddy" desc="Match by subject + chapter" tint="from-primary to-cyan" />
+        <ActionCard to="/solve" icon={<Zap />} title="AI Doubt Solver" desc="Hints + step-by-step" tint="from-sunshine to-primary" />
         <ActionCard to="/focus" icon={<Timer />} title="Pomodoro" desc="25 min focus sprint" tint="from-cyan to-sunshine" />
       </div>
 
