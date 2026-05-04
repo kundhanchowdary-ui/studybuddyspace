@@ -9,13 +9,43 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as OnboardingRouteImport } from './routes/onboarding'
+import { Route as FocusRouteImport } from './routes/focus'
+import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as BuddiesRouteImport } from './routes/buddies'
+import { Route as BadgesRouteImport } from './routes/badges'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as IndexRouteImport } from './routes/index'
 
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const OnboardingRoute = OnboardingRouteImport.update({
   id: '/onboarding',
   path: '/onboarding',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FocusRoute = FocusRouteImport.update({
+  id: '/focus',
+  path: '/focus',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BuddiesRoute = BuddiesRouteImport.update({
+  id: '/buddies',
+  path: '/buddies',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BadgesRoute = BadgesRouteImport.update({
+  id: '/badges',
+  path: '/badges',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthRoute = AuthRouteImport.update({
@@ -32,40 +62,120 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/badges': typeof BadgesRoute
+  '/buddies': typeof BuddiesRoute
+  '/dashboard': typeof DashboardRoute
+  '/focus': typeof FocusRoute
   '/onboarding': typeof OnboardingRoute
+  '/profile': typeof ProfileRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/badges': typeof BadgesRoute
+  '/buddies': typeof BuddiesRoute
+  '/dashboard': typeof DashboardRoute
+  '/focus': typeof FocusRoute
   '/onboarding': typeof OnboardingRoute
+  '/profile': typeof ProfileRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/badges': typeof BadgesRoute
+  '/buddies': typeof BuddiesRoute
+  '/dashboard': typeof DashboardRoute
+  '/focus': typeof FocusRoute
   '/onboarding': typeof OnboardingRoute
+  '/profile': typeof ProfileRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auth' | '/onboarding'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/badges'
+    | '/buddies'
+    | '/dashboard'
+    | '/focus'
+    | '/onboarding'
+    | '/profile'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/onboarding'
-  id: '__root__' | '/' | '/auth' | '/onboarding'
+  to:
+    | '/'
+    | '/auth'
+    | '/badges'
+    | '/buddies'
+    | '/dashboard'
+    | '/focus'
+    | '/onboarding'
+    | '/profile'
+  id:
+    | '__root__'
+    | '/'
+    | '/auth'
+    | '/badges'
+    | '/buddies'
+    | '/dashboard'
+    | '/focus'
+    | '/onboarding'
+    | '/profile'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthRoute: typeof AuthRoute
+  BadgesRoute: typeof BadgesRoute
+  BuddiesRoute: typeof BuddiesRoute
+  DashboardRoute: typeof DashboardRoute
+  FocusRoute: typeof FocusRoute
   OnboardingRoute: typeof OnboardingRoute
+  ProfileRoute: typeof ProfileRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/onboarding': {
       id: '/onboarding'
       path: '/onboarding'
       fullPath: '/onboarding'
       preLoaderRoute: typeof OnboardingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/focus': {
+      id: '/focus'
+      path: '/focus'
+      fullPath: '/focus'
+      preLoaderRoute: typeof FocusRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/buddies': {
+      id: '/buddies'
+      path: '/buddies'
+      fullPath: '/buddies'
+      preLoaderRoute: typeof BuddiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/badges': {
+      id: '/badges'
+      path: '/badges'
+      fullPath: '/badges'
+      preLoaderRoute: typeof BadgesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/auth': {
@@ -88,7 +198,12 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthRoute: AuthRoute,
+  BadgesRoute: BadgesRoute,
+  BuddiesRoute: BuddiesRoute,
+  DashboardRoute: DashboardRoute,
+  FocusRoute: FocusRoute,
   OnboardingRoute: OnboardingRoute,
+  ProfileRoute: ProfileRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
