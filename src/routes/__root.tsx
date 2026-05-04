@@ -34,11 +34,15 @@ export const Route = createRootRoute({
       { title: "Study Buddy Finder — Find your study partner" },
       { name: "description", content: "Match with students learning the same chapter. Focus together with Pomodoro, earn XP, and build study streaks." },
       { name: "author", content: "Study Buddy" },
-      { property: "og:title", content: "Study Buddy Finder" },
-      { property: "og:description", content: "Find someone fighting the same chapter boss." },
+      { property: "og:title", content: "Study Buddy Finder — Find your study partner" },
+      { property: "og:description", content: "Match with students learning the same chapter. Focus together with Pomodoro, earn XP, and build study streaks." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Study Buddy Finder — Find your study partner" },
+      { name: "twitter:description", content: "Match with students learning the same chapter. Focus together with Pomodoro, earn XP, and build study streaks." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/7f5f1bb0-9209-4dd6-a3fd-2bb37cbeb9ef" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/7f5f1bb0-9209-4dd6-a3fd-2bb37cbeb9ef" },
     ],
     links: [
       {
