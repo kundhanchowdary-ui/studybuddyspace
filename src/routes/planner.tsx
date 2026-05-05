@@ -219,7 +219,7 @@ function Planner() {
                   <XAxis dataKey="date" tick={{ fontSize: 11 }} />
                   <YAxis tick={{ fontSize: 11 }} />
                   <Tooltip cursor={{ opacity: 0.1 }} contentStyle={{ borderRadius: 12, fontSize: 12 }} />
-                  <Bar dataKey="minutes" fill="hsl(var(--primary))" radius={[6,6,0,0]} />
+                  <Bar dataKey="minutes" fill="var(--primary)" radius={[6,6,0,0]} />
                 </BarChart>
               </ResponsiveContainer>
             </div>
