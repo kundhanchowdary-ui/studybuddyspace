@@ -1,18 +1,20 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { useAuth } from "@/lib/auth";
+import { supabase } from "@/integrations/supabase/client";
 import { AppShell } from "@/components/AppShell";
 import { Mascot } from "@/components/Mascot";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
-import { Sparkles, ImagePlus, X, Send, Loader2, Lightbulb } from "lucide-react";
+import { Sparkles, ImagePlus, X, Send, Loader2, Lightbulb, BookmarkPlus } from "lucide-react";
 import { toast } from "sonner";
 import ReactMarkdown from "react-markdown";
 import remarkMath from "remark-math";
 import remarkGfm from "remark-gfm";
 import rehypeKatex from "rehype-katex";
 import "katex/dist/katex.min.css";
+import { ShareableSolution } from "@/components/ShareableSolution";
 
 export const Route = createFileRoute("/solve")({
   component: Solve,
