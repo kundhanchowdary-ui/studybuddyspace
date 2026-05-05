@@ -290,3 +290,18 @@ function ItemCard({ item, onComplete, onReminder, onDelete }: { item: Item; onCo
     </div>
   );
 }
+
+function FragmentRow({ h, week, items, onComplete, onReminder, onDelete }: { h: number; week: Date[]; items: Item[]; onComplete: (it: Item) => void; onReminder: (it: Item) => void; onDelete: (id: string) => void }) {
+  return (
+    <>
+      <div className="text-[10px] text-muted-foreground text-right pr-2 pt-1 border-t border-border/40">{minToLabel(h*60)}</div>
+      {week.map(d => (
+        <Cell key={`${fmtDate(d)}-${h}`} dateStr={fmtDate(d)} hour={h}>
+          {items.filter(i => i.scheduled_date === fmtDate(d) && Math.floor(i.start_minute/60) === h).map(i => (
+            <ItemCard key={i.id} item={i} onComplete={() => onComplete(i)} onReminder={() => onReminder(i)} onDelete={() => onDelete(i.id)} />
+          ))}
+        </Cell>
+      ))}
+    </>
+  );
+}
