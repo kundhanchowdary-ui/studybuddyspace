@@ -7,7 +7,7 @@ import { Mascot } from "@/components/Mascot";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import { Flame, Timer, Users, AlertCircle, Zap, BookOpen } from "lucide-react";
+import { Flame, Timer, Users, AlertCircle, Zap, BookOpen, CalendarDays, History } from "lucide-react";
 
 export const Route = createFileRoute("/dashboard")({
   component: Dashboard,
@@ -83,9 +83,11 @@ function Dashboard() {
 
       {/* Quick actions */}
       <div className="grid sm:grid-cols-2 gap-3 mb-6">
-        <ActionCard to="/buddies" icon={<Users />} title="Find a buddy" desc="Match by subject + chapter" tint="from-primary to-cyan" />
+        <ActionCard to="/planner" icon={<CalendarDays />} title="Study Planner" desc="Drag-drop calendar + goals" tint="from-primary to-cyan" />
+        <ActionCard to="/buddies" icon={<Users />} title="Find a buddy" desc="Match by subject + chapter" tint="from-cyan to-primary" />
         <ActionCard to="/solve" icon={<Zap />} title="AI Doubt Solver" desc="Hints + step-by-step" tint="from-sunshine to-primary" />
-        <ActionCard to="/focus" icon={<Timer />} title="Pomodoro" desc="25 min focus sprint" tint="from-cyan to-sunshine" />
+        <ActionCard to="/history" icon={<History />} title="Doubt history" desc="Revisit saved hints" tint="from-cyan to-sunshine" />
+        <ActionCard to="/focus" icon={<Timer />} title="Pomodoro" desc="25 min focus sprint" tint="from-primary to-sunshine" />
       </div>
 
       {/* Today's chapters */}
