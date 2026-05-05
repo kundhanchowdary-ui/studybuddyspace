@@ -14,6 +14,33 @@ export type Database = {
   }
   public: {
     Tables: {
+      daily_goals: {
+        Row: {
+          created_at: string
+          goal_date: string
+          id: string
+          target_minutes: number
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          goal_date: string
+          id?: string
+          target_minutes?: number
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          goal_date?: string
+          id?: string
+          target_minutes?: number
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       focus_sessions: {
         Row: {
           chapter: string | null
@@ -51,6 +78,54 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      planner_items: {
+        Row: {
+          chapter: string | null
+          completed: boolean
+          created_at: string
+          duration_minutes: number
+          id: string
+          reminder_enabled: boolean
+          reminder_minutes_before: number
+          scheduled_date: string
+          start_minute: number
+          subject: string | null
+          title: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          chapter?: string | null
+          completed?: boolean
+          created_at?: string
+          duration_minutes?: number
+          id?: string
+          reminder_enabled?: boolean
+          reminder_minutes_before?: number
+          scheduled_date: string
+          start_minute?: number
+          subject?: string | null
+          title: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          chapter?: string | null
+          completed?: boolean
+          created_at?: string
+          duration_minutes?: number
+          id?: string
+          reminder_enabled?: boolean
+          reminder_minutes_before?: number
+          scheduled_date?: string
+          start_minute?: number
+          subject?: string | null
+          title?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
       }
       profiles: {
         Row: {
@@ -106,6 +181,36 @@ export type Database = {
           total_focus_minutes?: number
           updated_at?: string
           xp?: number
+        }
+        Relationships: []
+      }
+      solved_doubts: {
+        Row: {
+          answer: string
+          created_at: string
+          has_image: boolean
+          id: string
+          question: string
+          subject: string | null
+          user_id: string
+        }
+        Insert: {
+          answer: string
+          created_at?: string
+          has_image?: boolean
+          id?: string
+          question: string
+          subject?: string | null
+          user_id: string
+        }
+        Update: {
+          answer?: string
+          created_at?: string
+          has_image?: boolean
+          id?: string
+          question?: string
+          subject?: string | null
+          user_id?: string
         }
         Relationships: []
       }

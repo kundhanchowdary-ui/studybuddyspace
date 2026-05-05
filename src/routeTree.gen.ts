@@ -11,7 +11,9 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SolveRouteImport } from './routes/solve'
 import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as PlannerRouteImport } from './routes/planner'
 import { Route as OnboardingRouteImport } from './routes/onboarding'
+import { Route as HistoryRouteImport } from './routes/history'
 import { Route as FocusRouteImport } from './routes/focus'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as BuddiesRouteImport } from './routes/buddies'
@@ -29,9 +31,19 @@ const ProfileRoute = ProfileRouteImport.update({
   path: '/profile',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PlannerRoute = PlannerRouteImport.update({
+  id: '/planner',
+  path: '/planner',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const OnboardingRoute = OnboardingRouteImport.update({
   id: '/onboarding',
   path: '/onboarding',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HistoryRoute = HistoryRouteImport.update({
+  id: '/history',
+  path: '/history',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FocusRoute = FocusRouteImport.update({
@@ -72,7 +84,9 @@ export interface FileRoutesByFullPath {
   '/buddies': typeof BuddiesRoute
   '/dashboard': typeof DashboardRoute
   '/focus': typeof FocusRoute
+  '/history': typeof HistoryRoute
   '/onboarding': typeof OnboardingRoute
+  '/planner': typeof PlannerRoute
   '/profile': typeof ProfileRoute
   '/solve': typeof SolveRoute
 }
@@ -83,7 +97,9 @@ export interface FileRoutesByTo {
   '/buddies': typeof BuddiesRoute
   '/dashboard': typeof DashboardRoute
   '/focus': typeof FocusRoute
+  '/history': typeof HistoryRoute
   '/onboarding': typeof OnboardingRoute
+  '/planner': typeof PlannerRoute
   '/profile': typeof ProfileRoute
   '/solve': typeof SolveRoute
 }
@@ -95,7 +111,9 @@ export interface FileRoutesById {
   '/buddies': typeof BuddiesRoute
   '/dashboard': typeof DashboardRoute
   '/focus': typeof FocusRoute
+  '/history': typeof HistoryRoute
   '/onboarding': typeof OnboardingRoute
+  '/planner': typeof PlannerRoute
   '/profile': typeof ProfileRoute
   '/solve': typeof SolveRoute
 }
@@ -108,7 +126,9 @@ export interface FileRouteTypes {
     | '/buddies'
     | '/dashboard'
     | '/focus'
+    | '/history'
     | '/onboarding'
+    | '/planner'
     | '/profile'
     | '/solve'
   fileRoutesByTo: FileRoutesByTo
@@ -119,7 +139,9 @@ export interface FileRouteTypes {
     | '/buddies'
     | '/dashboard'
     | '/focus'
+    | '/history'
     | '/onboarding'
+    | '/planner'
     | '/profile'
     | '/solve'
   id:
@@ -130,7 +152,9 @@ export interface FileRouteTypes {
     | '/buddies'
     | '/dashboard'
     | '/focus'
+    | '/history'
     | '/onboarding'
+    | '/planner'
     | '/profile'
     | '/solve'
   fileRoutesById: FileRoutesById
@@ -142,7 +166,9 @@ export interface RootRouteChildren {
   BuddiesRoute: typeof BuddiesRoute
   DashboardRoute: typeof DashboardRoute
   FocusRoute: typeof FocusRoute
+  HistoryRoute: typeof HistoryRoute
   OnboardingRoute: typeof OnboardingRoute
+  PlannerRoute: typeof PlannerRoute
   ProfileRoute: typeof ProfileRoute
   SolveRoute: typeof SolveRoute
 }
@@ -163,11 +189,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProfileRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/planner': {
+      id: '/planner'
+      path: '/planner'
+      fullPath: '/planner'
+      preLoaderRoute: typeof PlannerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/onboarding': {
       id: '/onboarding'
       path: '/onboarding'
       fullPath: '/onboarding'
       preLoaderRoute: typeof OnboardingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/history': {
+      id: '/history'
+      path: '/history'
+      fullPath: '/history'
+      preLoaderRoute: typeof HistoryRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/focus': {
@@ -222,7 +262,9 @@ const rootRouteChildren: RootRouteChildren = {
   BuddiesRoute: BuddiesRoute,
   DashboardRoute: DashboardRoute,
   FocusRoute: FocusRoute,
+  HistoryRoute: HistoryRoute,
   OnboardingRoute: OnboardingRoute,
+  PlannerRoute: PlannerRoute,
   ProfileRoute: ProfileRoute,
   SolveRoute: SolveRoute,
 }
