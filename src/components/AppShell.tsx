@@ -1,12 +1,14 @@
 import { Link, useLocation } from "@tanstack/react-router";
-import { Home, Users, Timer, Trophy, User, Sparkles } from "lucide-react";
+import { Home, Users, Timer, Trophy, User, Sparkles, CalendarDays, History } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { ReactNode } from "react";
 
 const tabs = [
   { to: "/dashboard", icon: Home, label: "Home" },
+  { to: "/planner", icon: CalendarDays, label: "Planner" },
   { to: "/buddies", icon: Users, label: "Buddies" },
   { to: "/solve", icon: Sparkles, label: "Solve" },
+  { to: "/history", icon: History, label: "History" },
   { to: "/focus", icon: Timer, label: "Focus" },
   { to: "/badges", icon: Trophy, label: "Badges" },
   { to: "/profile", icon: User, label: "Profile" },
