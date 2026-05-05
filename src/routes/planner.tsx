@@ -250,16 +250,7 @@ function Planner() {
             </div>
             <div className="grid" style={{ gridTemplateColumns: "60px repeat(7, 1fr)" }}>
               {HOURS.map(h => (
-                <>
-                  <div key={`h-${h}`} className="text-[10px] text-muted-foreground text-right pr-2 pt-1 border-t border-border/40">{minToLabel(h*60)}</div>
-                  {week.map(d => (
-                    <Cell key={`${fmtDate(d)}-${h}`} dateStr={fmtDate(d)} hour={h}>
-                      {items.filter(i => i.scheduled_date === fmtDate(d) && Math.floor(i.start_minute/60) === h).map(i => (
-                        <ItemCard key={i.id} item={i} onComplete={() => toggleComplete(i)} onReminder={() => toggleReminder(i)} onDelete={() => deleteItem(i.id)} />
-                      ))}
-                    </Cell>
-                  ))}
-                </>
+                <FragmentRow key={h} h={h} week={week} items={items} onComplete={toggleComplete} onReminder={toggleReminder} onDelete={deleteItem} />
               ))}
             </div>
           </div>
