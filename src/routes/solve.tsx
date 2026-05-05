@@ -169,8 +169,24 @@ function Solve() {
 
       {(answer || busy) && (
         <Card className="glass rounded-3xl p-5 md:p-6">
-          <div className="flex items-center gap-2 mb-3 text-sm font-semibold text-primary">
-            <Lightbulb className="w-4 h-4" /> Tutor response
+          <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center gap-2 text-sm font-semibold text-primary">
+              <Lightbulb className="w-4 h-4" /> Tutor response
+            </div>
+            {answer && !busy && (
+              <div className="flex items-center gap-2">
+                <Button size="sm" variant="outline" className="rounded-full" onClick={async () => {
+                  if (!user) return;
+                  const { error } = await supabase.from("solved_doubts").insert({
+                    user_id: user.id, question: question || "(image)", answer, has_image: !!imageData,
+                  });
+                  if (error) toast.error(error.message); else toast.success("Saved to history");
+                }}>
+                  <BookmarkPlus className="w-4 h-4" /> Save
+                </Button>
+                <ShareableSolution question={question || "(image)"} answer={answer} />
+              </div>
+            )}
           </div>
           {answer ? (
             <div className="prose prose-sm md:prose-base max-w-none prose-headings:font-display prose-strong:text-foreground prose-p:text-foreground/90 prose-li:text-foreground/90">
